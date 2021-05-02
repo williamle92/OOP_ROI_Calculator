@@ -1,13 +1,15 @@
 class ROIcalc():
 
+    #add attribuates for the class to be zero. These are the values that we are going to be using throughout the calculator.
     def __init__(self):
         self.total_income = 0
         self.total_expenses = 0
         self.totalcf = 0
         self.returnoninvest = 0
-        
+   #First method to calculate the monthly rental income     
     def income(self):
         print("First things first, we are going to calculate your rental income. Enter 0 for the items that do not apply.")
+        #convert the input into integers in order to do calculations.
         rent = int(input("Please enter your total rental income (it is usually rent x number of units): "))
         laundry_storage = int(input("Please enter the total income for laundry or storage: "))
         misc = int(input("Please enter any other miscellaneous income you receive from this property: "))
@@ -15,7 +17,7 @@ class ROIcalc():
         print(f"Everything is looking good so far! Your total monthly rental income is ${self.total_income}")
         return self.total_income
     
-
+    #Create a method to calculate that expenses of the property.
     def expenses(self):
         print("Now we are going to calculate your expenses. Enter 0 for the items that do not apply")
         expenses1 = int(input("Please enter any tax expenses: "))
@@ -39,7 +41,7 @@ class ROIcalc():
         self.total_expenses = expenses1 + expenses2 + expenses3 + (expenses4/100 *self.total_income) + expenses5 + expenses6 + expenses8 + util
         print(f"Your total expenses is {self.total_expenses}")
         return self.total_expenses
-        
+    #Method for determining the cash flow    
     def cash_flow(self):
         print("Calculating cash flow....")
         cfask = input("...Warning! Sensitive financial information may be displayed... enter yes/no to continue. ").lower().strip()
@@ -52,7 +54,7 @@ class ROIcalc():
             self.totalcf = self.total_income - self.total_expenses
             return self.totalcf
 
-
+    #method for calculating the ROI
     def return_on_investment(self):
         print("Now we are going to calculate the total invesment.")
         downpayment = int(input("Please enter the total downpayment on the property: "))
@@ -66,7 +68,7 @@ class ROIcalc():
 
 
 
-
+#while loop to run the program on a loop.
 calculator = ROIcalc()
 while True: 
     print("Welcome to Williams Return on Investment Calculator!")
@@ -81,6 +83,7 @@ while True:
         else:
             print("You have not entered in any value into the ROI calculator.")
     elif ask == "calculate roi":
+        #calling the methods
         print("Lets get started!")
         calculator.income()
         calculator.expenses()
